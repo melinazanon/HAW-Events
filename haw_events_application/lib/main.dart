@@ -41,8 +41,20 @@ class EventTabsState extends State<EventTabs> with SingleTickerProviderStateMixi
         title: new Text('HAW EventApp'),
         backgroundColor: Colors.deepPurple ,
         //erstellen der Tabs in der TabBar oben
-        bottom: new TabBar(
+        /*bottom: new TabBar(
           //Zuweisung des Default-Controllers zur TabBar
+          controller: controller,
+          //Erstellen der Tabs in der TabBar
+          tabs: <Tab>[
+            new Tab(icon: new Icon(Icons.list)),
+            new Tab(icon: new Icon(Icons.calendar_today)),
+            new Tab(icon: new Icon(Icons.star)),
+          ],
+        ),*/
+      ),
+      bottomNavigationBar: new Material(
+        color: Colors.deepPurple,
+        child: new TabBar(
           controller: controller,
           //Erstellen der Tabs in der TabBar
           tabs: <Tab>[
