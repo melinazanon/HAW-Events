@@ -68,6 +68,10 @@ class EventOverview extends StatelessWidget {
 
     return Scaffold(
       body: MyListView,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.filter),
+      ),
     );
   }
 }
