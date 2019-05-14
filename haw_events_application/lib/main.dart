@@ -39,7 +39,7 @@ class EventTabsState extends State<EventTabs> with SingleTickerProviderStateMixi
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('HAW EventApp'),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Color(0xFF003ca0),
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.menu),
@@ -59,7 +59,7 @@ class EventTabsState extends State<EventTabs> with SingleTickerProviderStateMixi
         ),*/
       ),
       bottomNavigationBar: new Material(
-        color: Colors.deepPurple,
+        color: Color(0xFF003ca0),
         child: new TabBar(
           controller: controller,
           //Erstellen der Tabs in der TabBar

@@ -10,10 +10,10 @@ class EventOverview extends StatelessWidget {
         padding: EdgeInsets.only(right: 20.0),
         decoration: new BoxDecoration(
           border: new Border(
-            right: new BorderSide(width: 1.0, color: Colors.white)
+            right: new BorderSide(width: 1.0, color: Colors.black)
           )
         ),
-        child: Icon(Icons.image, color: Colors.white),
+        child: Icon(Icons.image, color: Colors.black),
       ),
       title: new Text(
         "Eventtitel",
@@ -27,13 +27,13 @@ class EventOverview extends StatelessWidget {
           Text(
             "Eventbeschreibung",
             style: TextStyle(
-              color: Colors.white
+              color: Colors.black
             ),
           ),
           Text(
             "Department",
             style: TextStyle(
-              color: Colors.white
+              color: Colors.black
             ),
           )
         ],
@@ -51,7 +51,7 @@ class EventOverview extends StatelessWidget {
       margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 6.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.yellowAccent
+          color: Colors.white
         ),
         child: myListTile(),
       ),
@@ -67,6 +67,7 @@ class EventOverview extends StatelessWidget {
     );
 
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: MyListView,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
