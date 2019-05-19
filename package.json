@@ -1,0 +1,23 @@
+{
+  "name": "haw-events",
+  "version": "1.0.0",
+  "description": "API for HAW Events Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melinazanon/HAW-Events.git"
+  },
+  "author": "Melina Zanon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melinazanon/HAW-Events/issues"
+  },
+  "homepage": "https://github.com/melinazanon/HAW-Events#readme",
+  "dependencies": {
+    "express": "^4.17.0",
+    "mongoose": "^5.5.9"
+  }
+}
