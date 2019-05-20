@@ -4,7 +4,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-const eventRoutes = require('./api/routes/event');
+const eventRoutes = require('./api/routes/events');
 const userRoutes = require('./api/routes/users');
 
 mongoose.connect(
