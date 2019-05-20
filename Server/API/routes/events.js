@@ -37,6 +37,6 @@ router.get('/:productId',EventsController.events_get_one);
 
 router.patch('/:productId', checkAuth,EventsController.events_update);
 
-router.delete('/:productId', checkAuth,EventsController.Events_delete);
+router.delete('/:productId', checkAuth,EventsController.events_delete);
 
 module.exports=router;
