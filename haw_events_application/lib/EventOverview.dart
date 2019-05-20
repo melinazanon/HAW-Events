@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:haw_events_application/Dialogs.dart';
 
 class EventOverview extends StatelessWidget {
   @override
@@ -41,7 +42,6 @@ class EventOverview extends StatelessWidget {
     final makeCard = new Container(
       height: 100.0,
       margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-      //padding: EdgeInsets.all(0),
       decoration: new BoxDecoration(
         shape: BoxShape.rectangle,
         color: Colors.white,
@@ -72,7 +72,7 @@ class EventOverview extends StatelessWidget {
       backgroundColor: Colors.grey[300],
       body: MyListView,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => showDialog(context: context, builder: (BuildContext context) => CustomDialogs()),
         child: Icon(Icons.filter),
         backgroundColor: Color(0xFF003ca0),
       ),
