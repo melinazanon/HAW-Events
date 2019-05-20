@@ -33,10 +33,10 @@ router.get('/', EventsController.events_get_all);
 
 router.post('/', checkAuth,upload.single('image'), EventsController.events_create);
 
-router.get('/:productId',EventsController.events_get_one);
+router.get('/:eventId',EventsController.events_get_one);
 
-router.patch('/:productId', checkAuth,EventsController.events_update);
+router.patch('/:eventId', checkAuth,EventsController.events_update);
 
-router.delete('/:productId', checkAuth,EventsController.events_delete);
+router.delete('/:eventId', checkAuth,EventsController.events_delete);
 
 module.exports=router;

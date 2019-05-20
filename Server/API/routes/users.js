@@ -8,7 +8,7 @@ router.post('/signup',UsersController.users_create);
 
 router.post('/login',UsersController.users_login);
 
-router.patch('/:userId', check-Auth, UsersController.users_update);
+router.patch('/:userId', checkAuth, UsersController.users_update);
 
 
 module.exports=router;
