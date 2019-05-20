@@ -3,30 +3,12 @@ const Event = require('../models/event');
 
 exports.events_get_all = (req,res,next)=>{
     Event.find()
+        .select('name contact date start end room type department description _id image')
         .exec()
         .then(docs => {
             const response = {
                 count: docs.length,
-                events: docs.map(doc => {
-                    return{
-                        name: doc.name,
-                        contact: doc.contact,
-                        date: doc.date,
-                        start: doc.start,
-                        end: doc.end,
-                        room: doc.room,
-                        type: doc.type,
-                        department: doc.department,
-                        website: doc.website,
-                        description: doc.description,
-                        image: doc.image,
-                        _id: doc._id,
-                        request:{
-                            type: 'GET',
-                            url: 'http://localhost:3000/events/'+doc._id
-                        }
-                    }
-                })
+                events: docs
             };
             res.status(200).json(response);
         })
@@ -41,6 +23,7 @@ exports.events_get_all = (req,res,next)=>{
 exports.events_get_one = (req,res,next)=>{
     const id= req.params.eventId;
     Event.findById(id)
+        .select('name contact date start end room type department description _id image')
         .exec()
         .then(doc =>{
             console.log(doc);
