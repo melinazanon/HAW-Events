@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/public/css/style.css" />
+        <!----<script type="text/javascript" src="/javascripts/jquery.js"></script> -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script type="text/javascript" src="javascripts/code.js"></script>
+    </head>
+    <body>
+       <header>
+           <h1>DMI Veranstaltungskalender</h1>
+    </header>
+       <form action="/views/Ergebnis.html" method="POST">
+           <table>
+               <tr>
+                   <td>Veranstaltungsname : </td> 
+                   <td><input type="text" class="input" id="vername_input"> </td>
+                   <td><span class="error_form" id="ver_name_error"></span></td>
+               </tr>
+               <tr>
+                <td> Department: </td> 
+                <td><input type="text" class="input" id=""> </td>
+                <td><span class="error_form" id=""></span></td>
+            </tr>
+            <tr>
+                <td>Beschreibung : </td> 
+                <td><input class="input"> </td>
+                <td><span class="error_form" id=""></span></td>
+            </tr>
+            <tr>
+                <td>Raum : </td> 
+                <td><input type="text" class="input" id=""> </td>
+                <td><span class="error_form" id=""></span></td>
+            </tr>
+            <tr>
+                <td>Datum : </td> 
+                <td><input type="text" class="input" id=""> </td>
+                <td><span class="error_form" id=""></span></td>
+            </tr>
+            <td> Uhrzeit: </td> 
+            <td><input type="text" class="input" id=""> </td>
+            <td><span class="error_form" id=""></span></td>
+        </tr>
+        </tr>
+            <td> Verabstaltungsbild: </td> 
+            <td><input type="text" class="input" id=""> </td>
+            <td><span class="error_form" id=""></span></td>
+        </tr>
+        </tr>
+        <td> Link: </td> 
+        <td><input type="text" class="input" id=""> </td>
+        <td><span class="error_form" id=""></span></td>
+        </tr>
+           </table>
+           <button type="submit">Submit</button>
+       </form>
+    </body>
+</html>
