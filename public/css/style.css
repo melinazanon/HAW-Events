@@ -1,26 +1,61 @@
-table {
-    width: 600px;
-  }
+* { 
+  font-family:'Open Sans',Roboto,'Helvetica Neue', sans-serif;
+}
+
+header {
+        text-align:left;
+        background-color: #003ca0;
+        color:white;
+        height:7%;
+        padding:3px;
+        position:absolute;
+        width:100%;
+        top:0;
+        left:0;
+        
+}
+
+#Überschrift {
+    margin: 5px;
+    
+}
+
+.link1 {
+      color:white;
+      font-size:20px;
+      text-decoration: none;
+      margin-left:10%;
+}
+
+#kalenderlink {
+          margin-left: 1%;
+}
+
+#logout {
+  float: right;
+  font-size:20px;
+  color:white;
+}
+
+
+#Menü1 {
+  margin:5px;
+      float:center;
+}
+#formular:nth-child(1) {
+  border: none;
+  border-collapse: inherit;
   
-  table, td, caption {
-      border: 1px solid black;
-      border-collapse: collapse;
-      padding: 0.4em;
-      text-align: center;
-  }
-  
-  td:nth-of-type(6),td:nth-of-type(7) {
-    background: #ebf5d7;
-    color: #666;
-  }
-  
-  caption, tr:first-of-type {
-    background: #666;
-    color: #c4ced3;
-    font-weight: bold;
-  } 
-  td.heute {
-    color:red; 
-    font-weight: bold;
-    background: #ffebe6;
-  }
+}
+
+#logout {
+  margin-right:2em;
+}
+
+#formtable {
+    margin-top:4%;
+    width:auto;
+    border:none;
+    text-align: left;
+    padding:1em;
+}
