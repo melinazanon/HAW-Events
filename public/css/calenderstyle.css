@@ -1,3 +1,42 @@
+* { 
+    font-family:'Open Sans',Roboto,'Helvetica Neue', sans-serif;
+  }
+  
+  header {
+          text-align:left;
+          background-color: #003ca0;
+          color:white;
+          height:7%;
+          padding:3px;
+          position:absolute;
+          width:100%;
+          top:0;
+          left:0;
+          
+  }
+  #Überschrift {
+    margin: 5px;
+    
+}
+  .link1 {
+    color:white;
+    font-size:20px;
+    text-decoration: none;
+    margin-left:10%;
+}
+
+#kalenderlink {
+        margin-left: 1%;
+}
+
+#logout {
+float: right;
+font-size:20px;
+color:white;
+margin-right:2em;
+}
+
+
 table {
     width: 600px;
     margin-top:4%;
