@@ -12,12 +12,8 @@ class _CustomDialogsState extends State<CustomDialogs> {
   //var _filteroptionen = ["keine", "filter1","filter2","filter3"];
   var _currentitemSelected1 = "keine";
   var _currentitemSelected2 = "keine";
-  var _currentitemSelected3 = "keine";
-  var _currentitemSelected4 = "keine";
-  var _veranstaltungsortFilter = ["keine", "Forum","Ditze-Hörsaal","E62","Produktionslabor"];
-  var _veranstaltungsartFilter = ["keine", "Workshop","Kolloqium","Rundgang","Ring-Vorlesung"];
-  var _department = ["keine", "extern","Medientechnik","Design","Information","gesamte Fakultät"];
-  var _uhrzeit = ["keine","8:00 - 12:00 Uhr","12:00 - 16:00 Uhr","16:00-20:00 Uhr"];
+  var _veranstaltungsartFilter = ["keine", "Workshop","Kolloqium","Großveranstaltungen","Ring-Vorlesung","Filme","Austellungen","GameJams","Media Night","Messe"];
+  var _department = ["keine", "extern","Medientechnik","Design","Information","DMI gesamt"];
 
 
   @override
@@ -39,7 +35,7 @@ class _CustomDialogsState extends State<CustomDialogs> {
             decoration: new BoxDecoration(
               color: Colors.white,
               shape: BoxShape.rectangle,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(8),
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
@@ -93,46 +89,15 @@ class _CustomDialogsState extends State<CustomDialogs> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),
                 SizedBox(height: 10),
-                Row(
-                  children: <Widget>[
-                    _filterText("Ort"),
-                    DropdownButton<String>(
-                      items: _veranstaltungsortFilter.map((String dropDownStringItem) {
-                        return DropdownMenuItem<String>(
-                          value: dropDownStringItem,
-                          child: Text(dropDownStringItem),
-                        );
-                      }).toList(),
-                      onChanged: (String newValueSelected) {
-                        setState(() {
-                          this._currentitemSelected3 = newValueSelected; 
-                        });
-                      },
-                      value: _currentitemSelected3,
-                    )
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                ),
-                SizedBox(height: 10),
-                Row(
-                  children: <Widget>[
-                    _filterText("Uhrzeit"),
-                    DropdownButton<String>(
-                      items: _uhrzeit.map((String dropDownStringItem) {
-                        return DropdownMenuItem<String>(
-                          value: dropDownStringItem,
-                          child: Text(dropDownStringItem),
-                        );
-                      }).toList(),
-                      onChanged: (String newValueSelected) {
-                        setState(() {
-                          this._currentitemSelected4 = newValueSelected; 
-                        });
-                      },
-                      value: _currentitemSelected4,
-                    )
-                  ],
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: FlatButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      //Add actual filtering here
+                    },
+                    child: Text("Filter anwenden", style: TextStyle(fontSize: 17.5)),
+                  ),
                 )
               ],
             ),

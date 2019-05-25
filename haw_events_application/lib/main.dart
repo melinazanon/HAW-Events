@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'EventOverview.dart' as eventOverview;
 import 'Calender.dart' as calender;
 import 'Favourites.dart' as favourite;
@@ -6,7 +7,8 @@ import 'Favourites.dart' as favourite;
 void main() {
   runApp(new MaterialApp(
     debugShowCheckedModeBanner: false,    //damit das Debug-Banner weggeht
-    home: new EventTabs()
+    home: new EventTabs(),
+    theme: ThemeData(indicatorColor: Color(0xffa0bedc)),
   ));
 }
 
@@ -19,6 +21,8 @@ class EventTabsState extends State<EventTabs> with SingleTickerProviderStateMixi
 
   //Default Controller für die Tabs 
   TabController controller;
+  //PopupMenuItems Liste mit den drei Punkten
+  static const List<String>_choices = <String>["Einstellungen","Impressum"];
 
   @override
   void initState() {
@@ -41,27 +45,26 @@ class EventTabsState extends State<EventTabs> with SingleTickerProviderStateMixi
         title: new Text('HAW EventApp'),
         backgroundColor: Color(0xFF003ca0),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.menu),
-            onPressed: () {}
+          //Einstellungs DropDownMenu oben rechts in der AppBar
+          PopupMenuButton<String>(
+            onSelected: choicesAction,
+            itemBuilder: (BuildContext context) {
+              return _choices.map((String choice) {
+                return PopupMenuItem<String>(
+                  value: choice,
+                  child: Text(choice),
+                );
+              }).toList() ;
+            },
           )
         ],
-        //erstellen der Tabs in der TabBar oben
-        /*bottom: new TabBar(
-          //Zuweisung des Default-Controllers zur TabBar
-          controller: controller,
-          //Erstellen der Tabs in der TabBar
-          tabs: <Tab>[
-            new Tab(icon: new Icon(Icons.list)),
-            new Tab(icon: new Icon(Icons.calendar_today)),
-            new Tab(icon: new Icon(Icons.star)),
-          ],
-        ),*/
       ),
+      //erstellen der Tabs in der TabBar oben
       bottomNavigationBar: new Material(
         color: Color(0xFF003ca0),
         child: new TabBar(
           controller: controller,
+          indicatorColor: Color(0xffa0bedc),
           //Erstellen der Tabs in der TabBar
           tabs: <Tab>[
             new Tab(icon: new Icon(Icons.list)),
@@ -82,6 +85,11 @@ class EventTabsState extends State<EventTabs> with SingleTickerProviderStateMixi
         ],
       ),
     );
+  }
+
+  void choicesAction(String choices) {
+    print("Working");
+    //Add actual routes to the selected pages
   }
 }
 
