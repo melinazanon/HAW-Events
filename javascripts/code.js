@@ -5,6 +5,6 @@ $(function() {
 	var error_ver_name = false;
 
 	$(".input").focusout(function(){
-		alert("beedoobeedoobeedoo");
+		
 	});
 });

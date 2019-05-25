@@ -1,0 +1,6 @@
+{
+    "env":{
+        "Mongo":"Dagehtmirjaglattderstreifenab",
+        "JWT_KEY": "secret"
+    }
+}
