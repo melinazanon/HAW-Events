@@ -37,15 +37,13 @@ class _CalenderState extends State<Calender> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          // Switch out 2 lines below to play with TableCalendar's settings
-          //-----------------------
-          _buildTableCalendar(),
-          // _buildTableCalendarWithBuilders(),
-          const SizedBox(height: 8.0),
-        ],
+      body: Center(
+       //mainAxisSize: MainAxisSize.max,
+        //children: <Widget>[
+          //Center(
+          child: _buildTableCalendar(),
+          //const SizedBox(height: 8.0),
+          //)],
       ),
     );
   }
@@ -62,18 +60,10 @@ class _CalenderState extends State<Calender> with TickerProviderStateMixin {
         CalendarFormat.month: 'Month',
       },
       calendarStyle: CalendarStyle(
-        selectedColor: Colors.deepOrange[400],
-        todayColor: Colors.deepOrange[200],
-        markersColor: Colors.brown[700],
+        selectedColor: Color(0xffa0bedc),
+        todayColor: Color(0xFF003ca0),
+        markersColor: Colors.blue[500],
       ),
-      headerStyle: HeaderStyle(
-        formatButtonTextStyle: TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
-        formatButtonDecoration: BoxDecoration(
-          color: Colors.deepOrange[400],
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-      ),
-
     );
   }
 }

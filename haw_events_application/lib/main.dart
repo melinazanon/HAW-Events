@@ -29,6 +29,7 @@ class EventTabsState extends State<EventTabs> with SingleTickerProviderStateMixi
     super.initState();
     //Parameter length = Anzahl der gewünschten Tabs
     controller = new TabController(vsync: this, length: 3);
+    controller.index = 1;
   }
 
   @override
