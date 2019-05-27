@@ -49,43 +49,55 @@ exports.events_get_one = (req,res,next)=>{
 }
 
 exports.events_create = (req,res,next)=>{
-    const event = new Event({
-        _id: new mongoose.Types.ObjectId,
-        name: req.body.name,
-        contact: req.body.contact,
-        date: req.body.date,
-        start: req.body.start,
-        end: req.body.end,
-        room: req.body.room,
-        type: req.body.type,
-        department: req.body.department,
-        website: req.body.website,
-        description: req.body.description,
-        image: req.file.path
-    });
-    event
-        .save()
-        .then(result =>{
-        console.log(result);
-        res.status(201).json({
-            message:'Created Event successfully',
-            createdEvent: {
-                name: result.name,
-                date: result.date,
-                _id: result._id,
-                request:{
-                    type: 'GET',
-                    url: 'http://localhost:3000/events/'+result._id
-                }
+    Event.findOne({date: req.body.date, start: req.body.start, room: req.body.room})
+        .exec()
+        .then(eventfound =>{
+            if(eventfound){
+                return res.status(409).json({
+                    message: 'Room is already booked'
+                });
             }
+            else{
+                const event = new Event({
+                    _id: new mongoose.Types.ObjectId,
+                    name: req.body.name,
+                    contact: req.body.contact,
+                    date: req.body.date,
+                    start: req.body.start,
+                    end: req.body.end,
+                    room: req.body.room,
+                    type: req.body.type,
+                    department: req.body.department,
+                    website: req.body.website,
+                    description: req.body.description,
+                    image: req.file.path
+                });
+                event
+                    .save()
+                    .then(result =>{
+                    console.log(result);
+                    res.status(201).json({
+                        message:'Created Event successfully',
+                        createdEvent: {
+                            name: result.name,
+                            date: result.date,
+                            _id: result._id,
+                            request:{
+                                type: 'GET',
+                                url: 'http://localhost:3000/events/'+result._id
+                            }
+                        }
+                    });
+                })
+                .catch(err =>{
+                    console.log(err);
+                    res.status(500).json({
+                        error: err
+                    })
+                });
+            }
+
         });
-    })
-    .catch(err =>{
-        console.log(err);
-        res.status(500).json({
-            error: err
-        })
-    });
 }
 
 exports.events_delete = (req,res,next)=>{
