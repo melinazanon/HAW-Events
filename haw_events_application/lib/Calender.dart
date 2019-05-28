@@ -60,9 +60,14 @@ class _CalenderState extends State<Calender> with TickerProviderStateMixin {
         CalendarFormat.month: 'Month',
       },
       calendarStyle: CalendarStyle(
+        weekendStyle: TextStyle(color: Color(0xFF003ca0)),
+        outsideWeekendStyle: TextStyle(color: Color(0xFF2453a5)),
         selectedColor: Color(0xffa0bedc),
         todayColor: Color(0xFF003ca0),
-        markersColor: Colors.blue[500],
+        markersColor: Colors.blue[500], 
+      ),
+      daysOfWeekStyle: DaysOfWeekStyle(
+        weekendStyle: TextStyle(color: Color(0xFF003ca0))
       ),
     );
   }
