@@ -3,7 +3,7 @@ const Event = require('../models/event');
 
 exports.events_get_all = (req,res,next)=>{
     Event.find()
-        .select('name contact date start end room type department description _id image')
+        .select('name contact start end room type department description _id image')
         .exec()
         .then(docs => {
             const response = {
@@ -23,7 +23,7 @@ exports.events_get_all = (req,res,next)=>{
 exports.events_get_one = (req,res,next)=>{
     const id= req.params.eventId;
     Event.findById(id)
-        .select('name contact date start end room type department description _id image')
+        .select('name contact start end room type department description _id image')
         .exec()
         .then(doc =>{
             console.log(doc);
@@ -49,7 +49,7 @@ exports.events_get_one = (req,res,next)=>{
 }
 
 exports.events_create = (req,res,next)=>{
-    Event.findOne({date: req.body.date, start: req.body.start, room: req.body.room})
+    Event.findOne({start: req.body.start, room: req.body.room})
         .exec()
         .then(eventfound =>{
             if(eventfound){
@@ -62,7 +62,6 @@ exports.events_create = (req,res,next)=>{
                     _id: new mongoose.Types.ObjectId,
                     name: req.body.name,
                     contact: req.body.contact,
-                    date: req.body.date,
                     start: req.body.start,
                     end: req.body.end,
                     room: req.body.room,
@@ -80,7 +79,7 @@ exports.events_create = (req,res,next)=>{
                         message:'Created Event successfully',
                         createdEvent: {
                             name: result.name,
-                            date: result.date,
+                            start: result.start.getDate()+"."+(result.start.getMonth()+1)+"."+result.start.getFullYear(),
                             _id: result._id,
                             request:{
                                 type: 'GET',
@@ -113,9 +112,8 @@ exports.events_delete = (req,res,next)=>{
                     body:{
                         name: 'String',
                         contact: 'String',
-                        date: 'String',
-                        start: 'String',
-                        end: 'String',
+                        start: 'Date',
+                        end: 'Date',
                         room: 'String',
                         type: 'String',
                         department: 'String',
