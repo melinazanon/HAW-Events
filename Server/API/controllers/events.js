@@ -49,7 +49,7 @@ exports.events_get_one = (req,res,next)=>{
 }
 
 exports.events_create = (req,res,next)=>{
-    Event.findOne({start: req.body.start, room: req.body.room})
+    Event.findOne({room: req.body.room, $or: [{start: {$gte: req.body.start,$lt: req.body.end}},{start: {$lt: req.body.start},end: {$gt: req.body.start}}]})
         .exec()
         .then(eventfound =>{
             if(eventfound){
