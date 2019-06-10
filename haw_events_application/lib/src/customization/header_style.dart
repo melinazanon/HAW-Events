@@ -61,7 +61,7 @@ class HeaderStyle {
   final Icon rightChevronIcon;
 
   const HeaderStyle({
-    this.centerHeaderTitle = false,
+    this.centerHeaderTitle = true,
     this.formatButtonVisible = true,
     this.formatButtonShowsNext = true,
     this.titleTextBuilder,

@@ -69,6 +69,9 @@ class _CalenderState extends State<Calender> with TickerProviderStateMixin {
       daysOfWeekStyle: DaysOfWeekStyle(
         weekendStyle: TextStyle(color: Color(0xFF003ca0))
       ),
+      headerStyle: HeaderStyle(
+        centerHeaderTitle: true,
+      ),
     );
   }
 }

@@ -87,29 +87,6 @@ class _EventOverviewState extends State<EventOverview> {
       //onTap: () => ,
     ); 
 
-    /*final makeCard = new Container(
-      height: 90.0,
-      //Abstände zum Bildschirmrand und zwischen den Karten
-      margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-      decoration: new BoxDecoration(
-        shape: BoxShape.rectangle,
-        color: Colors.white,
-        borderRadius: new BorderRadius.circular(8.0),
-        border: Border.all(color: Colors.grey[200],width: 0.5),
-        boxShadow: <BoxShadow>[
-          new BoxShadow(
-            color: Colors.black45,
-            offset: new Offset(1.5, 2.5),
-            blurRadius: 7.5
-          )
-        ]
-      ),
-      child: new Center(
-        //Inhalt der Karte/des Containers
-        child: myListTile()
-      )
-    );
-    */
     final blueBorder = new SizedBox(
       height: 100,
       child: Stack(
@@ -166,19 +143,7 @@ class _EventOverviewState extends State<EventOverview> {
         itemCount: 20,
         itemBuilder: (BuildContext context,int index) {
           return blueBorder;
-            /*children: <Widget>[
-              Positioned(
-                top: 0,
-                left: 0,
-                child:makeCard,
-              ),
-              /*Positioned(
-                left: 0,
-                top: 0,
-                child: blueBorder,
-              )*/
-            ]
-          );*/
+          
         },
         //Leerraum nach dem letzten Element in der Liste
         padding: EdgeInsets.only(bottom: 80),
