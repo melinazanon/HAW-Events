@@ -46,7 +46,7 @@ class _EventOverviewState extends State<EventOverview> {
           border: Border.all(width: 2,color: Colors.white)
         ),
         child: new Image.asset(
-          "assets/images/HAW_Logo.png",
+          "assets/images/HAW_Logo_color.jpg",
           fit: BoxFit.cover,
           width: 60,
           height: 60,

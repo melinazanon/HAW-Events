@@ -46,6 +46,8 @@ flutter:
     - assets/images/HAW_Logo.png
     - assets/images/_haw_logo_white.png
     - assets/images/Flimmerfest.jpg
+    - assets/images/haw_logo_white_small.png
+    - assets/images/HAW_Logo_color.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

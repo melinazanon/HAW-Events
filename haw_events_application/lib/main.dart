@@ -44,11 +44,9 @@ class EventTabsState extends State<EventTabs> with SingleTickerProviderStateMixi
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Color(0xFF003ca0),
-        leading: Image.asset("assets/images/_haw_logo_white.png",
+        leading: Image.asset("assets/images/haw_logo_white_small.png",
           fit: BoxFit.cover,
-          width: 30,
-          height: 30,
-        ),
+          ),
         title: new Text('HAW EventApp'),
         actions: <Widget>[
           //Einstellungs DropDownMenu oben rechts in der AppBar
