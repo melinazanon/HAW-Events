@@ -8,7 +8,8 @@ const eventRoutes = require('./api/routes/events');
 const userRoutes = require('./api/routes/users');
 
 mongoose.connect(
-    'mongodb+srv://jimmies:'+process.env.Mongo+'@cluster0-0qbpp.mongodb.net/haw_events?retryWrites=true',
+    //'mongodb+srv://jimmies:'+process.env.Mongo+'@cluster0-0qbpp.mongodb.net/haw_events?retryWrites=true',
+    'mongodb://event:event@localhost:27017/event?retryWrites=true',
     {useNewUrlParser: true}
 );
 mongoose.Promise= global.Promise;
