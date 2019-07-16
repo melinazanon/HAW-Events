@@ -153,7 +153,10 @@ class _EventOverviewState extends State<EventOverview> {
       body: MyListView,
       floatingActionButton: FloatingActionButton(
         onPressed: () => showDialog(context: context, builder: (BuildContext context) => CustomDialogs()),
-        child: Icon(Icons.filter),
+        child: Container(
+          padding: EdgeInsets.only(top: 5),
+          child: Image.asset('assets/images/filter_icon.png', width: 35),
+        ),
         backgroundColor: Color(0xFF003ca0),
       ),
     );
