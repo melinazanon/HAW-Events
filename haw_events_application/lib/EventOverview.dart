@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:haw_events_application/Dialogs.dart';
+import 'package:haw_events_application/EventDialogs.dart';
 
 class EventOverview extends StatefulWidget {
   EventOverview({Key key}) : super(key: key);
@@ -82,7 +83,9 @@ class _EventOverviewState extends State<EventOverview> {
         )*/
         child: Icon(Icons.star_border, color: Colors.grey, size: 50.0)
       ),
-      //onTap: () => ,
+      onTap: () {
+        showDialog(context: context, builder: (BuildContext context) => EventDialogs(id: index));
+      }
     ); 
 
     SizedBox blueBorder(int index) => new SizedBox(
