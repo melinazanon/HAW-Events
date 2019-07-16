@@ -37,8 +37,8 @@ class _EventOverviewState extends State<EventOverview> {
     });
   }
   */
-    ListTile myListTile() => ListTile(
-      contentPadding: EdgeInsets.symmetric(horizontal: 15.0,vertical: 7.5),
+    ListTile myListTile(int index) => ListTile(
+      contentPadding: EdgeInsets.symmetric(horizontal: 11.0,vertical: 3),
       leading: new Container(
         width: 60,
         height: 60,
@@ -53,9 +53,8 @@ class _EventOverviewState extends State<EventOverview> {
         ),
       ),
       title: new Container(
-        padding: EdgeInsets.only(right: 10),
         child: new Text(
-          "Raum — Datum",
+          "Produktionslabor — 09.05",
           style: TextStyle(
             color: Colors.grey,
             fontSize: 15
@@ -63,11 +62,10 @@ class _EventOverviewState extends State<EventOverview> {
         )
       ),
       subtitle: Container(
-        padding: EdgeInsets.only(bottom: 10),
         child: new Text(
-          "Veranstaltung",
+          "Rundgang",
           style: TextStyle(
-            fontSize: 22,
+            fontSize: 21,
             fontWeight: FontWeight.bold,
             color: Colors.black
           ),
@@ -87,7 +85,7 @@ class _EventOverviewState extends State<EventOverview> {
       //onTap: () => ,
     ); 
 
-    final blueBorder = new SizedBox(
+    SizedBox blueBorder(int index) => new SizedBox(
       height: 100,
       child: Stack(
         children: <Widget>[
@@ -131,7 +129,7 @@ class _EventOverviewState extends State<EventOverview> {
             height: 100,
             margin: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
             padding: EdgeInsets.only(top: 4),
-            child: myListTile(),
+            child: myListTile(index),
           )
         ],
       ),
@@ -142,7 +140,7 @@ class _EventOverviewState extends State<EventOverview> {
         //Anzahl der Elemente in der Liste der Veranstaltungen
         itemCount: 20,
         itemBuilder: (BuildContext context,int index) {
-          return blueBorder;
+          return blueBorder(index);
           
         },
         //Leerraum nach dem letzten Element in der Liste
