@@ -23,7 +23,7 @@ class _CustomDialogsState extends State<CustomDialogs> {
       title,
       style: TextStyle(
       fontSize: 16,
-      fontWeight: FontWeight.w700
+      fontWeight: FontWeight.w600
       ),
     );
     
@@ -88,16 +88,28 @@ class _CustomDialogsState extends State<CustomDialogs> {
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 15),
                 Align(
                   alignment: Alignment.bottomCenter,
-                  child: FlatButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      //Add actual filtering here
-                    },
-                    child: Text("Filter anwenden", style: TextStyle(fontSize: 17.5)),
-                  ),
+                  child: Row(
+                    children: <Widget>[
+                      FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        //Add actual filtering here
+                      },
+                      child: Text("Anwenden", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                      ),
+                      FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        //Add actual filtering here
+                      },
+                      child: Text("Alle aufheben", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                      )
+                    ],
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  )
                 )
               ],
             ),
