@@ -47,7 +47,7 @@ flutter:
     - assets/images/_haw_logo_white.png
     - assets/images/Flimmerfest.jpg
     - assets/images/haw_logo_white_small.png
-    - assets/images/HAW_Logo_color.png
+    - assets/images/HAW_Logo_color.jpg
     - assets/images/filter_icon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -24,6 +24,7 @@ class EventTabsState extends State<EventTabs> with SingleTickerProviderStateMixi
   //PopupMenuItems Liste mit den drei Punkten
   static const List<String>_choices = <String>["Einstellungen","Impressum"];
 
+  //Wird aufgerufen, bevor zum ersten Mal gerendert wird (create/start)
   @override
   void initState() {
     super.initState();
