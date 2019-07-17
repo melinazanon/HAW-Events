@@ -3,7 +3,7 @@ const Event = require('../models/event');
 
 exports.events_get_all = (req,res,next)=>{
     Event.find()
-        .select('name contact start end room type department description _id image')
+        .select('name contact start end room type department description website _id image')
         .exec()
         .then(docs => {
             const response = {
@@ -23,7 +23,7 @@ exports.events_get_all = (req,res,next)=>{
 exports.events_get_one = (req,res,next)=>{
     const id= req.params.eventId;
     Event.findById(id)
-        .select('name contact start end room type department description _id image')
+        .select('name contact start end room type department description website _id image')
         .exec()
         .then(doc =>{
             console.log(doc);
@@ -58,6 +58,13 @@ exports.events_create = (req,res,next)=>{
                 });
             }
             else{
+                var image;
+                if(req.file ==null){
+                    image='uploads\\haw.png';
+                }
+                else{
+                    image= req.image.path;
+                }
                 const event = new Event({
                     _id: new mongoose.Types.ObjectId,
                     name: req.body.name,
@@ -69,7 +76,7 @@ exports.events_create = (req,res,next)=>{
                     department: req.body.department,
                     website: req.body.website,
                     description: req.body.description,
-                    image: req.file.path
+                    image: image
                 });
                 event
                     .save()
@@ -96,6 +103,12 @@ exports.events_create = (req,res,next)=>{
                 });
             }
 
+        })
+        .catch(err =>{
+            console.log(err);
+            res.status(500).json({
+                error: err
+            })
         });
 }
 
