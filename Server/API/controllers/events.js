@@ -63,7 +63,7 @@ exports.events_create = (req,res,next)=>{
                     image='uploads\\haw.png';
                 }
                 else{
-                    image= req.image.path;
+                    image= req.file.path;
                 }
                 const event = new Event({
                     _id: new mongoose.Types.ObjectId,
@@ -147,11 +147,31 @@ exports.events_delete = (req,res,next)=>{
 
 exports.events_update = (req,res,next)=>{
     const id = req.params.eventId;
-    const updateOps ={};
-    for (const ops of req.body){
+    console.log(req.file);
+    //const updateOps ={};
+    /*for (const ops of req.body){
         updateOps[ops.propName]= ops.value;
+    }*/
+    var image;
+    if(req.file ==null){
+        image='uploads\\haw.png';
     }
-    Event.update({_id: id},{$set: updateOps})
+    else{
+        image= req.file.path;
+    }
+    const event = new Event({
+        name: req.body.name,
+        contact: req.body.contact,
+        start: req.body.start,
+        end: req.body.end,
+        room: req.body.room,
+        type: req.body.type,
+        department: req.body.department,
+        website: req.body.website,
+        description: req.body.description,
+        image: image
+    });
+    Event.update({_id: id},event)
         .exec()
         .then(result => {
             res.status(200).json({
