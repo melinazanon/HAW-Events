@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  http: ^0.12.0+2
   flutter:
     sdk: flutter
 
@@ -49,6 +50,8 @@ flutter:
     - assets/images/haw_logo_white_small.png
     - assets/images/HAW_Logo_color.jpg
     - assets/images/filter_icon.png
+    - assets/eventsasset1.json
+    - assets/eventsasset.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.
