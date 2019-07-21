@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:haw_events_application/event.dart';
+import 'package:haw_events_application/event_services.dart';
+
 class EventDialogs extends StatefulWidget {
 
   final int id;
@@ -16,10 +19,15 @@ class EventDialogs extends StatefulWidget {
 class _EventDialogsState extends State<EventDialogs> {
 
   int id;
+  final EventList eventList = getEventList();
   _EventDialogsState(this.id);
+
+  bool notNull(Object o) => o != null;
 
   @override
   Widget build(BuildContext context) {
+
+    var condition = true;
     
    //zur Berechnung der Verhältnisse im Dialogsfenster
     const double cardHeight = 158;
@@ -50,11 +58,12 @@ class _EventDialogsState extends State<EventDialogs> {
                 child: 
                   //Kerndaten
                   Column(children: <Widget>[
-                    Text("06.07.2019 — 08.07.2019", style: TextStyle(fontSize: 17, color: Colors.grey,)),
-                    Text("Forum Finkenau", style: TextStyle(fontSize: 17, color: Colors.grey,),),
-                    Text("Absolventenausstellu", style: TextStyle(fontSize: 21, color: Colors.black, fontWeight: FontWeight.bold),),
-                    Text("Großveranstaltung", style: TextStyle(fontSize: 17, color: Colors.grey,)),
-                    Text("Medientechnik", style: TextStyle(fontSize: 17, color: Colors.grey,)),
+                    //Hier Methode fürs Anzeigen des Datums (Unterscheidung, ob mehrtägig oder nicht)
+                    Text(getDate(eventList.events[id].start) +"  "+ getTime(eventList.events[id].start)  +" - "+ getTime(eventList.events[id].end), style: TextStyle(fontSize: 17, color: Colors.grey,)),
+                    Text(eventList.events[id].room, style: TextStyle(fontSize: 17, color: Colors.grey,),),
+                    Text(eventList.events[id].name, style: TextStyle(fontSize: 21, color: Colors.black, fontWeight: FontWeight.bold),),
+                    Text(eventList.events[id].type, style: TextStyle(fontSize: 17, color: Colors.grey,)),
+                    Text(eventList.events[id].department, style: TextStyle(fontSize: 17, color: Colors.grey,)),
                     SizedBox(height: 5),
                     //Beschreibung
                     Container(
@@ -63,20 +72,28 @@ class _EventDialogsState extends State<EventDialogs> {
                       child: SingleChildScrollView(
                         padding: EdgeInsets.all(5),
                         child: new Text(
-                          "We're no strangers to love You know the rules and so do IA full commitment's what I'm thinking ofYou wouldn't get this from any other guyI just wanna tell you how I'm feelingGotta make you understand agfdasdhsgfdhgahfahdsgfhadsfgdskfgafhdsgfkhsadgfguadsgfljdsagfuhagdsfgadgfdgfgfjhagfkjdagagdgdsahfgahjfgddhjdsgjfgdsfgdjahgfljG",
+                          eventList.events[id].description,
                           style: TextStyle(fontSize: 15),),
                       ),
                       //color: Colors.blue,
                     ),
                     //Website-Button
-                    Align(alignment: Alignment.bottomLeft,
+                    Align(
+                      alignment: Alignment.bottomLeft,
                       child: FlatButton(
                         onPressed: () { //Link zur möglichen Website (Abfangen, ob Link existiert oder nicht)
                         },
-                        child: Text("Website", style: TextStyle(fontSize: 17.5, color: Color(0xff003ca0), fontWeight: FontWeight.w700)),
-                      ),
-                    )
-                  ],
+                        child: Text(
+                          //abfrage, ob es eine Website gibt oder nicht
+                          eventList.events[id].website != null?eventList.events[id].website:"", 
+                          style: TextStyle(
+                            fontSize: 17.5, 
+                            color: Color(0xff003ca0), 
+                            fontWeight: FontWeight.w700)
+                          ),
+                      ),            
+                    ),
+                  ].where(notNull).toList(),
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                 ),

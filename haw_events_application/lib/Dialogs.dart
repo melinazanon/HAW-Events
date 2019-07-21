@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+//muss außerhalb der Klasse passieren, damit er currentItems nicht beim neu öffnen des Dialogs wieder überschreibt
+var _currentitemSelected1 = "keine";
+var _currentitemSelected2 = "keine";
+
 class CustomDialogs extends StatefulWidget {
   CustomDialogs({Key key}) : super(key: key);
 
@@ -9,16 +13,14 @@ class CustomDialogs extends StatefulWidget {
 
 class _CustomDialogsState extends State<CustomDialogs> {
 
-  //var _filteroptionen = ["keine", "filter1","filter2","filter3"];
-  var _currentitemSelected1 = "keine";
-  var _currentitemSelected2 = "keine";
-  var _veranstaltungsartFilter = ["keine", "Workshop","Kolloqium","Großveranstaltungen","Ring-Vorlesung","Filme","Austellungen","GameJams","Media Night","Messe"];
+  var _veranstaltungsartFilter = ["keine", "Sondervorlesungen","Großveranstaltungen","Filme","Austellungen","Hackathon","Messe","Media Nights","Party","Auftaktveranstaltung","Kolloqium","Konzert","Konferenz"];
   var _department = ["keine", "extern","Medientechnik","Design","Information","DMI gesamt"];
 
 
   @override
   Widget build(BuildContext context) {
 
+    //Funktion für Filtertext vor DropDownMenu
     Text _filterText(String title) => Text(
       title,
       style: TextStyle(
@@ -45,8 +47,10 @@ class _CustomDialogsState extends State<CustomDialogs> {
               ]
             ),
             child: Column(
+              //so eng wie möglich
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
+                //Department Reihe
                 Row(
                   children: <Widget>[
                     _filterText("Department"),
@@ -59,7 +63,7 @@ class _CustomDialogsState extends State<CustomDialogs> {
                       }).toList(),
                       onChanged: (String newValueSelected) {
                         setState(() {
-                          this._currentitemSelected1 = newValueSelected; 
+                          _currentitemSelected1 = newValueSelected; 
                         });
                       },
                       value: _currentitemSelected1,
@@ -68,6 +72,7 @@ class _CustomDialogsState extends State<CustomDialogs> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 ),
                 SizedBox(height: 10),
+                //Art Reihe
                 Row(
                   children: <Widget>[
                     _filterText("Art"),
@@ -80,7 +85,7 @@ class _CustomDialogsState extends State<CustomDialogs> {
                       }).toList(),
                       onChanged: (String newValueSelected) {
                         setState(() {
-                          this._currentitemSelected2 = newValueSelected; 
+                          _currentitemSelected2 = newValueSelected; 
                         });
                       },
                       value: _currentitemSelected2,
@@ -97,6 +102,7 @@ class _CustomDialogsState extends State<CustomDialogs> {
                       onPressed: () {
                         Navigator.of(context).pop();
                         //Add actual filtering here
+                        print(_currentitemSelected1 + _currentitemSelected2);
                       },
                       child: Text("Anwenden", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
                       ),
@@ -104,6 +110,9 @@ class _CustomDialogsState extends State<CustomDialogs> {
                       onPressed: () {
                         Navigator.of(context).pop();
                         //Add actual filtering here
+                        //Text zurücksetzten
+                        _currentitemSelected1 = "keine";
+                        _currentitemSelected2 = "keine";
                       },
                       child: Text("Alle aufheben", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
                       )
