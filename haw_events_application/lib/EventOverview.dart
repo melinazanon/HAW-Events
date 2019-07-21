@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
 import 'package:haw_events_application/Dialogs.dart';
 import 'package:haw_events_application/EventDialogs.dart';
+import 'package:haw_events_application/event.dart';
+import 'package:haw_events_application/event_services.dart';
 
 class EventOverview extends StatefulWidget {
-  EventOverview({Key key}) : super(key: key);
+
+  final EventList eventList = getEventList();
+
+  EventOverview({
+    Key key,  
+  }) : super(key: key);
 
   @override
   _EventOverviewState createState() => _EventOverviewState();
@@ -11,11 +20,13 @@ class EventOverview extends StatefulWidget {
 
 class _EventOverviewState extends State<EventOverview> {
 
+  //List<String> data;
   _EventOverviewState();
 
   @override
   void initState() {
     super.initState();
+    //print(data);
   }
 
   @override
@@ -54,8 +65,10 @@ class _EventOverviewState extends State<EventOverview> {
         ),
       ),
       title: new Container(
+        //padding: EdgeInsets.only(left: 15),
         child: new Text(
-          "Produktionslabor — 09.05",
+          //"Produktionslabor — 09.05",
+          eventList.events[index].room + " — " + getDate(eventList.events[index].start),
           style: TextStyle(
             color: Colors.grey,
             fontSize: 15
@@ -63,8 +76,10 @@ class _EventOverviewState extends State<EventOverview> {
         )
       ),
       subtitle: Container(
+        //padding: EdgeInsets.only(left: 15),
         child: new Text(
-          "Rundgang",
+          //"Rundgang",
+          eventList.events[index].name,
           style: TextStyle(
             fontSize: 21,
             fontWeight: FontWeight.bold,
@@ -141,7 +156,7 @@ class _EventOverviewState extends State<EventOverview> {
     final MyListView = new Container(
       child: ListView.builder(
         //Anzahl der Elemente in der Liste der Veranstaltungen
-        itemCount: 20,
+        itemCount: eventList.events.length,
         itemBuilder: (BuildContext context,int index) {
           return blueBorder(index);
           

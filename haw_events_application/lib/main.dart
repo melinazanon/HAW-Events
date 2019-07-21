@@ -1,5 +1,10 @@
+import 'package:http/http.dart' as http;
+import 'package:haw_events_application/event_services.dart';
+import 'package:haw_events_application/event.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+
 import 'EventOverview.dart' as eventOverview;
 import 'Calender.dart' as calender;
 import 'Favourites.dart' as favourite;
@@ -10,6 +15,8 @@ void main() {
     home: new EventTabs(),
     theme: ThemeData(indicatorColor: Color(0xffa0bedc)),
   ));
+  print("running");
+  loadEvent();
 }
 
 class EventTabs extends StatefulWidget {
@@ -38,7 +45,6 @@ class EventTabsState extends State<EventTabs> with SingleTickerProviderStateMixi
     controller.dispose();
     super.dispose();
   }
-  //
 
   @override
   Widget build(BuildContext context) {
