@@ -35,7 +35,7 @@ router.post('/', checkAuth,upload.single('image'), EventsController.events_creat
 
 router.get('/:eventId',EventsController.events_get_one);
 
-router.patch('/:eventId', checkAuth,EventsController.events_update);
+router.patch('/:eventId', checkAuth,upload.single('image'),EventsController.events_update);
 
 router.delete('/:eventId', checkAuth,EventsController.events_delete);
 
