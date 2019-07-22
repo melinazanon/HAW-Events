@@ -32,7 +32,7 @@ class _EventDialogsState extends State<EventDialogs> {
    //zur Berechnung der Verhältnisse im Dialogsfenster
     const double cardHeight = 158;
     const double dialogWidth = 280;
-    const double streifenWidth = 40;
+    const double streifenWidth = 0.1;
     const double dialogHeightText = 311;
 
   
@@ -40,16 +40,16 @@ class _EventDialogsState extends State<EventDialogs> {
             children: <Widget>[
               //Akzent-Streifen
               Container(
-                width: streifenWidth,
-                height: dialogHeightText,
+                width: MediaQuery.of(context).size.width *streifenWidth,
+                height: dialogHeightText ,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(bottomLeft: Radius.circular(8.0)),
                   color: Color(0xff003ca0)),
               ),
               //Informationen
               Container(
-                width: dialogWidth - streifenWidth - 10,
-                height: dialogHeightText,
+                width: MediaQuery.of(context).size.width*(1-streifenWidth)-80,
+                height: dialogHeightText ,
                 padding: EdgeInsets.only(top: 10, right: 10, left: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(bottomRight: Radius.circular(8.0)),
@@ -105,7 +105,7 @@ class _EventDialogsState extends State<EventDialogs> {
               children: <Widget>[
                 //Veranstaltungsbild
                 Container(  
-                  width: dialogWidth,
+                  width: MediaQuery.of(context).size.width,
                   height: cardHeight,
                   child: Card(
                     elevation: 0.0,
@@ -168,8 +168,9 @@ class _EventDialogsState extends State<EventDialogs> {
     );
 
     final _dialogWindow = Container(   
-            height: MediaQuery.of(context).size.height * 0.78,
-            padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+            height: MediaQuery.of(context).size.height ,
+            width: MediaQuery.of(context).size.width,
+            //padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
             decoration: new BoxDecoration(
               shape: BoxShape.rectangle,
               borderRadius: BorderRadius.circular(8.0),
