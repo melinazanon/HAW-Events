@@ -3,74 +3,123 @@
     <head>
         <link rel="stylesheet" type="text/css" href="public/css/style.css" />
         <!----<script type="text/javascript" src="/javascripts/jquery.js"></script> -->
+        <!--Einbindung von Jquery Bibliothek-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <!--Einbindung von der steuernden Jquery Datei -->
         <script type="text/javascript" src="javascripts/code.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
+        <!--Header-->
        <header>
         <div id="Überschrift">
-            <h1>DMI Veranstaltungskalender
+            <h1>HAW EVENTS
             <a class="link1" href="">ERSTELLEN</a>
-            <a class="link1" id="kalenderlink" href="views/Monatskalender.js">KALENDER</a>
-            <a id="logout" href="">Logout</a>
+            <a class="link1" id="kalenderlink" href="views/Monatskalender.html">KALENDER</a>
+            <a id="logout" href="views/login.html">Logout</a>
         </h1>
             
             </div>
            
     </header>
-       <form action="/views/Ergebnis.html" id="formular" method="POST">
+        <!--Formular-->
+       <form action="" id="formular" method="POST">
            <table id ="formtable">
+               <!--Veranstaltungsname-->
                <tr class="formtr">
                    <td>Veranstaltungsname : 
-                   <input type="text" class="input" id="vername_input"> </td>
-                   
-               </tr>
-               <tr class="formtr">
-                    <td>Datum : 
-                    <input type="text" class="input" id=""></td>
+                   <input type="text" class="input" id="vername" required> </td>
+                
+                </tr> 
+                <!--Startdatum-->
+               <tr class="formtr" id="datumsangabe">
+                    <td>Start 
+                    <input type="date" class="input" id="datum" required></td>
                     <td>Uhrzeit:
-                    Beginn<input type="number" class="input">
-                    Ende<input type="number" class="input"></td>
+                   <input type="number" class="input" min=0 max=23 required>
+                    <input type="number" class="input" class="uhrzeiten"min=0 max=59 required></td>
                 
+                </tr>
+                <!--End Datum-->
+                <tr class="formtr" id="datumsangabe2">
+                <td>Ende
+                <input type="date" class="input" id="datum2" required></td>
+                <td>Uhrzeit:
+               <input type="number" class="input" min=0 max=23 required>
+                <input type="number" class="input" class="uhrzeiten"min=0 max=59 required></td>
+            
+             </tr>
+            
+             <!--Raum und Veranstaltungsart-->
+            <tr >
+                <!--Raum-->
+                <td>
+                    <select required>
+                            <option value="null">Raum</option> 
+                    </select>
+                </td>
+                <!--Veranstaltungsart-->
+                <td>
+                    <select id="art" required>
+                            <option value="null">Art der Veranstaltung</option>
+                        <option value="Kolloquium">Kolloquium</option>
+                        <option value="Workshop">Workshop</option>
+                        <option value="Ringvorlesung">Ringvorlesung</option>
+                    </select>
+                </td>
             </tr>
-            <tr ><td>Raum :
-                <input type="text" class="input" id=""> </td>
-                
-                <td>Art der Veranstaltung
-                <input list="Arten" name="Art">
-                <datalist id="Arten">
-                    <option value="Kolloquium">
-                    <option value="Workshop">
-                    <option value="Ringvorlesung" >
-                </datalist></td>
-                
-            </tr>
+
             <tr>
+                <!--Ansprechperson-->
                 <td>Ansprechperson:<input type="text" class="input"></td>
-                <td> Department: 
-                <input type="text" class="input" id=""> </td>  
+                
+                <!--Department-->
+                <td>  
+                    <select id="department" required>
+                        <option value="null" >Department</option>
+                        <option value="Fakultät DMI">Fakult&aumlt DMI </option>
+                        <option value="Medientechnik">Medientechnik </option>
+                        <option value="Design">Design</option>
+                        <option value="Information">Information</option>
+                        <option value="Extern">Extern</option>
+                    </select>
+                </td>  
             </tr>
+            <!--Beschreibung-->
             <tr>
                 <td>Beschreibung :  
-                <input type="text" class="input"> </td>
+                <textarea type="text" placeholder= class="input" height:7%>hier k&oumlnnte Ihre Beschreibung stehen</textarea> </td>
                 
             </tr>
             
         
         
             <tr>
-            <td> Link: 
-            <input type="text" class="input" id=""> </td>
+                <td> Link: 
+                    <input type="text" class="input" id=""> 
+                </td>
             </tr>
         
             <tr>
-            <td> Verabstaltungsbild: 
-            <input type="file" class="input" id=""> </td>
-           
-            </tr>
+                <td> Verabstaltungsbild: 
+                    <input type="file" class="input" id="file"> 
+                </td>
+           </tr>
         
            </table>
+           <!--Submitbutton-->
            <button id="bestätigung" type="submit">VERANSTALTUNG EINTRAGEN</button>
        </form>
+        <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
     </body>
 </html>
