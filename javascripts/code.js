@@ -44,8 +44,12 @@ $(function() {
 		//console.log("I'm heeeere");
 		formData.append("name",$("#vername").val());
 		formData.append('image',$('input[type=file]')[0].files[0]);
+		formData.append('contact',$("#ansprechperson").val());
+		formData.append('room',$("#raum").val());
 		formData.append("type",$("#art").val());
 		formData.append("department",$("#department").val());
+		formData.append('description',$("#description").val());
+		formData.append('website',$("#website").val());
 		//formData.append('')
 
 		for(var pair of formData.entries()) {
