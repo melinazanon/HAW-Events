@@ -1,4 +1,4 @@
-//import 'package:http/http.dart' as http;
+import 'package:http/http.dart' as http;
 
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
@@ -9,28 +9,16 @@ import 'package:intl/intl.dart';
 
 EventList eventList;
 
-Future<String> _getEvents() async {
-  return await rootBundle.loadString('assets/eventsasset.json');
-}
 
-  /*
-  List<dynamic> data;
-
-  Future<dynamic> getData() async {
-    http.Response response = await http.get(
-      Uri.encodeFull('https://jsonplaceholder.typicode.com/posts'),
+Future<dynamic> _getEvents() async {
+  final response = await http.get(
+      Uri.encodeFull('http://141.22.78.164:3010/events'),
       headers: {
         "Accept": "application/json"
       }
     );
-    this.setState(() {
-    data = json.decode(response.body);
-    });
-
-    print(data[1][1]);
-    return "Sucess";
-  }
-  */
+    return response.body;
+}
 
 
 Future loadEvent() async {
