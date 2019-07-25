@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Event = require('../models/event');
 
+
+
 exports.events_get_all = (req,res,next)=>{
     Event.find()
         .select('name contact start end room type department description website _id image')
@@ -22,18 +24,26 @@ exports.events_get_all = (req,res,next)=>{
 
 exports.events_filtered = (req,res,next)=>{
     var filter;
-    if(req.params.type === "keine"){
-        filter ={department:req.params.department}
+    if(req.params.department=== "keine"&&req.params.type === "keine" ){
+        console.log('hier');
+        filter={
+            type:{$ne:'keine'},
+            department:{$ne:'keine'}
+        };
     }
     else if(req.params.department=== "keine"){
-        filter ={type:req.params.type}
+        filter ={type:req.params.type};
+    }
+    else if(req.params.type === "keine" ){
+        filter ={department:req.params.department};
     }
     else{
         filter={
             type:req.params.type,
             department:req.params.department
-        }
+        };
     }
+
     Event.find(filter)
         .select('name contact start end room type department description website _id image')
         .exec()
@@ -50,6 +60,7 @@ exports.events_filtered = (req,res,next)=>{
                 error:err
             });
         });
+    
 }
 
 exports.events_get_one = (req,res,next)=>{
