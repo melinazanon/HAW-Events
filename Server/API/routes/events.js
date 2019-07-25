@@ -31,6 +31,8 @@ const EventsController = require('../controllers/events');
 
 router.get('/', EventsController.events_get_all);
 
+router.get('/:type/:department', EventsController.events_filtered);
+
 router.post('/', checkAuth,upload.single('image'), EventsController.events_create);
 
 router.get('/:eventId',EventsController.events_get_one);
