@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:haw_events_application/event_services.dart';
 
 //muss außerhalb der Klasse passieren, damit er currentItems nicht beim neu öffnen des Dialogs wieder überschreibt
-var _currentitemSelected1 = "keine";
-var _currentitemSelected2 = "keine";
+var _currentDepartment = "keine";
+var _currentArt = "keine";
 
 class CustomDialogs extends StatefulWidget {
   CustomDialogs({Key key}) : super(key: key);
@@ -13,8 +14,8 @@ class CustomDialogs extends StatefulWidget {
 
 class _CustomDialogsState extends State<CustomDialogs> {
 
-  var _veranstaltungsartFilter = ["keine", "Sondervorlesungen","Großveranstaltungen","Filme","Austellungen","Hackathon","Messe","Media Nights","Party","Auftaktveranstaltung","Kolloqium","Konzert","Konferenz"];
   var _department = ["keine", "extern","Medientechnik","Design","Information","DMI gesamt"];
+  var _veranstaltungsartFilter = ["keine", "Sondervorlesungen","Großveranstaltungen","Filme","Austellungen","Hackathon","Messe","Media Nights","Party","Auftaktveranstaltung","Kolloqium","Konzert","Konferenz"];
 
 
   @override
@@ -63,10 +64,10 @@ class _CustomDialogsState extends State<CustomDialogs> {
                       }).toList(),
                       onChanged: (String newValueSelected) {
                         setState(() {
-                          _currentitemSelected1 = newValueSelected; 
+                          _currentDepartment = newValueSelected; 
                         });
                       },
-                      value: _currentitemSelected1,
+                      value: _currentDepartment,
                     )
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -85,10 +86,10 @@ class _CustomDialogsState extends State<CustomDialogs> {
                       }).toList(),
                       onChanged: (String newValueSelected) {
                         setState(() {
-                          _currentitemSelected2 = newValueSelected; 
+                          _currentArt = newValueSelected; 
                         });
                       },
-                      value: _currentitemSelected2,
+                      value: _currentArt,
                     )
                   ],
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -101,20 +102,22 @@ class _CustomDialogsState extends State<CustomDialogs> {
                       FlatButton(
                       onPressed: () {
                         Navigator.of(context).pop();
+                            loadEvent();
+                        //loadEvent();
                         //Add actual filtering here
-                        print(_currentitemSelected1 + _currentitemSelected2);
+                        print(_currentDepartment + _currentArt);
                       },
                       child: Text("Anwenden", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
                       ),
                       FlatButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        //Add actual filtering here
-                        //Text zurücksetzten
-                        _currentitemSelected1 = "keine";
-                        _currentitemSelected2 = "keine";
-                      },
-                      child: Text("Alle aufheben", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                          //Add actual filtering here
+                          //Text zurücksetzten
+                          _currentDepartment = "keine";
+                          _currentArt = "keine";   
+                          loadEvent();                     },
+                        child: Text("Alle aufheben", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
                       )
                     ],
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -136,4 +139,12 @@ class _CustomDialogsState extends State<CustomDialogs> {
       child: dialogContent(context)
     );
   }
+}
+
+String getDepartmentFilter() {
+  return _currentDepartment;
+}
+
+String getArtFilter() {
+  return _currentArt;
 }

@@ -158,6 +158,7 @@ class _EventOverviewState extends State<EventOverview> {
         //Anzahl der Elemente in der Liste der Veranstaltungen
         itemCount: eventList.events.length,
         itemBuilder: (BuildContext context,int index) {
+          //setState((){});
           return blueBorder(index);
           
         },
