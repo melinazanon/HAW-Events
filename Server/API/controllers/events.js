@@ -103,10 +103,10 @@ exports.events_create = (req,res,next)=>{
             else{
                 var image;
                 if(req.file ==null){
-                    image='uploads\\haw.png';
+                    image='haw.png';
                 }
                 else{
-                    image= req.file.path;
+                    image= req.file.filename;
                 }
                 const event = new Event({
                     _id: new mongoose.Types.ObjectId,
@@ -197,10 +197,10 @@ exports.events_update = (req,res,next)=>{
     }*/
     var image;
     if(req.file ==null){
-        image='uploads\\haw.png';
+        image='haw.png';
     }
     else{
-        image= req.file.path;
+        image= req.file.filename;
     }
     const event = new Event({
         name: req.body.name,
