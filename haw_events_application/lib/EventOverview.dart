@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'dart:async';
 
 import 'package:haw_events_application/Dialogs.dart';
 import 'package:haw_events_application/EventDialogs.dart';
@@ -67,7 +68,6 @@ class _EventOverviewState extends State<EventOverview> {
       title: new Container(
         //padding: EdgeInsets.only(left: 15),
         child: new Text(
-          //"Produktionslabor — 09.05",
           eventList.events[index].room + " — " + getDate(eventList.events[index].start),
           style: TextStyle(
             color: Colors.grey,
@@ -78,7 +78,6 @@ class _EventOverviewState extends State<EventOverview> {
       subtitle: Container(
         //padding: EdgeInsets.only(left: 15),
         child: new Text(
-          //"Rundgang",
           eventList.events[index].name,
           style: TextStyle(
             fontSize: 21,
@@ -171,7 +170,7 @@ class _EventOverviewState extends State<EventOverview> {
       backgroundColor: Colors.white,
       body: MyListView,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => showDialog(context: context, builder: (BuildContext context) => CustomDialogs()),
+        onPressed: () => showDialog(context: context, builder: (BuildContext context) => CustomDialogs()).then((_)=>setState((){})),
         child: Container(
           padding: EdgeInsets.only(top: 5),
           child: Image.asset('assets/images/filter_icon.png', width: 35),

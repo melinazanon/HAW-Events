@@ -1,3 +1,5 @@
+//Klasse für Filterdialog
+
 import 'package:flutter/material.dart';
 import 'package:haw_events_application/event_services.dart';
 
@@ -14,6 +16,7 @@ class CustomDialogs extends StatefulWidget {
 
 class _CustomDialogsState extends State<CustomDialogs> {
 
+  //Arrays mit den verschiedenen Departments/Veranstaltungsarten
   var _department = ["keine", "extern","Medientechnik","Design","Information","DMI gesamt"];
   var _veranstaltungsartFilter = ["keine", "Sondervorlesungen","Großveranstaltungen","Filme","Austellungen","Hackathon","Messe","Media Nights","Party","Auftaktveranstaltung","Kolloqium","Konzert","Konferenz"];
 
@@ -99,20 +102,19 @@ class _CustomDialogsState extends State<CustomDialogs> {
                   alignment: Alignment.bottomCenter,
                   child: Row(
                     children: <Widget>[
-                      FlatButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                            loadEvent();
-                        //loadEvent();
-                        //Add actual filtering here
-                        print(_currentDepartment + _currentArt);
-                      },
-                      child: Text("Anwenden", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
-                      ),
+                      //Button zum Anwenden der ausgewählten Filter
                       FlatButton(
                         onPressed: () {
                           Navigator.of(context).pop();
-                          //Add actual filtering here
+                          loadEvent();
+                          print(_currentDepartment + _currentArt);
+                        },
+                        child: Text("Anwenden", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
+                      ),
+                      //Button zum Aufheben aller Filter (zurücksetzen aller Filter zu keine(default))
+                      FlatButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
                           //Text zurücksetzten
                           _currentDepartment = "keine";
                           _currentArt = "keine";   
@@ -141,6 +143,8 @@ class _CustomDialogsState extends State<CustomDialogs> {
   }
 }
 
+
+//Getter-Methoden für die LoadEvent Funktion mitsamt ausgewählten Filtern
 String getDepartmentFilter() {
   return _currentDepartment;
 }
